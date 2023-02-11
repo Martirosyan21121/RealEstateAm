@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
+
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="assets/style.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/script.js"></script>
+
+
+    <!-- Owl stylesheet -->
+    <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+    <script src="assets/owl-carousel/owl.carousel.js"></script>
+    <!-- Owl stylesheet -->
+
+
+    <!-- slitslider -->
+    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/custom.css"/>
+    <script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
+    <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
+    <!-- slitslider -->
+</head>
+<body><!-- banner -->
+<div class="inside-banner">
+    <div class="container">
+        <span class="pull-right"><a href="/">Home</a> / Register</span>
+        <h2>Register</h2>
+    </div>
+</div>
+<br>
+<h3 th:text="${exist}" style="text-align: center; color: red"></h3>
+
+<!-- banner -->
+<form action="/save" method="post">
+    <div class="container">
+        <div class="spacer">
+            <div class="row register">
+                <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
+
+                    <input type="text" class="form-control" placeholder="Full Name" name="name" required="required">
+                    <input type="text" class="form-control" placeholder="Full Surname" name="surname"
+                           required="required">
+                    <input type="email" class="form-control" placeholder="Enter Email" name="email" required="required">
+                    <input type="number" class="form-control" placeholder="Enter phone number" name="phoneNumber"
+                           required="required">
+                    <input type="password" class="form-control" placeholder="Password" onchange="onChange()" required
+                           minlength="6" name="password">
+                    <input type="password" class="form-control" placeholder="Confirm Password" onchange="onChange()"
+                           required minlength="6" name="confirm">
+
+                    <button type="submit" class="btn btn-success" name="Submit">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<footer th:insert="footer :: footer"></footer>
+<script>
+    function onChange() {
+        const password = document.querySelector('input[name=password]');
+        const confirm = document.querySelector('input[name=confirm]');
+        if (confirm.value === password.value) {
+            confirm.setCustomValidity('');
+        } else {
+            confirm.setCustomValidity('Passwords do not match');
+        }
+
+    }
+</script>
+</body>
+</html>
