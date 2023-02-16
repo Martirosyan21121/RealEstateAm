@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Configuration
 @EnableWebSecurity
@@ -45,12 +46,26 @@ public class SecurityConfiguration {
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/save")
                 .permitAll()
-                .antMatchers(HttpMethod.GET,"/about")
+                .antMatchers(HttpMethod.GET,"/myAccount")
                 .hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,"/activate")
                 .hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST,"/activateCode")
                 .hasAnyAuthority("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/admin111")
+                .hasAnyAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET,"/editProfile")
+                .hasAnyAuthority("USER","ADMIN")
+                .antMatchers(HttpMethod.POST,"/updateProfile")
+                .hasAnyAuthority("USER","ADMIN")
+                .antMatchers(HttpMethod.GET,"/addHome")
+                .hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.POST,"/addHome")
+                .hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.POST,"/sendMessage")
+                .hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.GET,"/message")
+                .hasAnyAuthority("USER")
                 .and()
                 .formLogin()
                 .loginPage("/login")

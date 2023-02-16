@@ -1,312 +1,143 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email</title>
-    <style type="text/css">
-        body {
-            margin: 0;
-            background-color: #cccccc;
-        }
-
-        table {
-            border-spacing: 0;
-        }
-
-        td {
-            padding: 0;
-        }
-
-        img {
-            border: 0;
-        }
-
-        .wrapper {
-            width: 100%;
-            table-layout: fixed;
-            background-color: #cccccc;
-            padding-bottom: 60px;
-        }
-
-        .main {
-            background-color: #FFFFFF;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 600px;
-            border-spacing: 0;
-            font-family: sans-serif;
-            color: #5cb85c;
-        }
-
-        .two-columns {
-            text-align: center;
-            font-size: 0;
-        }
-
-        .two-columns .column {
-            width: 100%;
-            max-width: 300px;
-            display: inline-block;
-            vertical-align: top;
-            text-align: center;
-        }
-
-        .three-columns {
-            text-align: center;
-            font-size: 0;
-            padding: 15px 0 25px;
-
-        }
-
-        .three-columns .column {
-            width: 100%;
-            max-width: 200px;
-            display: inline-block;
-            vertical-align: top;
-            text-align: center;
-        }
-
-        .three-columns .padding {
-            padding: 15px;
-        }
-
-        .three-columns .content {
-            font-size: 15px;
-            line-height: 20px;
-            padding: 0 5px;
-        }
-
-        .two-columns .last {
-            padding: 15px;
-        }
-
-        .two-columns .padding {
-            padding: 20px;
-        }
-
-        .two-columns .content {
-            font-size: 15px;
-            line-height: 20px;
-            text-align: left;
-        }
-
-        .button {
-            background-color: #FFFFFF;
-            color: #5cb85c;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .button-dar{
-            background-color:#5cb85c;
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            font-weight: bold;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="x-apple-disable-message-reformatting">
+    <title></title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style>
+        table, td, div, h1, p {
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
-
-<body>
-
-<center class="wrapper">
-
-    <table class="main" width="100%">
-
-        <tr>
-            <td height="8" style="background-color: #171a1d"></td>
-        </tr>
-
-
-        <tr>
-            <td style="background-color: #2a5ac9; color: #FFFFFF">
-                <table width="100%">
-                    <tr>
-                        <td class="two-columns last">
-
-                            <table class="column">
-                                <tr>
-                                    <td class="padding">
-                                        <table class="content">
-                                            <tr>
-                                                <td>
-                                                    <p style="font-weight: bold; font-size: 18px; color: #FFFFFF">
-                                                        Real Estate AM
-                                            </p>
-                                                    <p style="padding-bottom: 10px; color: #FFFFFF"> Your name` <em style="padding-bottom: 16px; color: #5cb85c" th:text="${user.name}"></em></p>
-                                                    <p style="padding-bottom: 10px; color: #FFFFFF"> Your surname` <em style="padding-bottom: 16px; color: #5cb85c" th:text="${user.surname}"></em></p>
-                                                    <p style="padding-bottom: 10px; color: #FFFFFF"> Your email` <em style="padding-bottom: 16px; color: #5cb85c" th:text="${user.email}"></em></p>
-                                                    <p style="padding-bottom: 10px; color: #FFFFFF"> Your register date` <em style="padding-bottom: 16px; color: #5cb85c" th:text="${user.localDate}"></em></p>
-                                                    <a th:href="${url}" class="button">Your Account</a>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </td>
-                    </tr>
-
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <table width="100%">
-                    <tr>
-                        <td class="three-columns">
-
-                            <table class="column">
-                                <tr>
-                                    <td class="padding">
-                                        <table class="content">
-
-                                            <tr>
-                                                <td>
-                                                    <p style="font-weight: bold; font-size: 17px">Ecommerce</p>
-                                                    <p>
-                                                        Responsive HTML Email Course to master email development.
-                                                    </p>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <table class="column">
-                                <tr>
-                                    <td class="padding">
-                                        <table class="content">
-
-                                            <tr>
-                                                <td>
-                                                    <p style="font-weight: bold; font-size: 17px">Ecommerce</p>
-                                                    <p>
-                                                        Responsive HTML Email Course to master email development.
-                                                    </p>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
+<body style="margin:0;padding:0;">
+<table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
+    <tr>
+        <td align="center" style="padding:0;">
+            <table role="presentation"
+                   style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
+                <tr>
+                    <td align="center" style="padding:40px 0 30px 0;background:#70bbd9;">
+                        <img src="https://assets.codepen.io/210284/h1.png" alt="" width="300"
+                             style="height:auto;display:block;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:36px 30px 42px 30px;">
+                        <table role="presentation"
+                               style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
+                            <tr>
+                                <td style="padding:0 0 36px 0;color:#153643;">
+                                    <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Dear user your Data</h1>
+                                    <h3 style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"
+                                        th:text="${user.name}">
+                                    </h3>
+                                    <h3 style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"
+                                        th:text="${user.surname}">
+                                    </h3>
+                                    <h3 style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"
+                                        th:text="${user.email}">
+                                    </h3>
+                                    <h3 style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"
+                                        th:text="${user.phoneNumber}">
+                                    </h3>
+                                    <h3 style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"
+                                        th:text="${user.localDate}">
+                                    </h3>
+                                    <h3 style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a
+                                            th:href="${url}"
+                                            style="color:#ee4c50;text-decoration:underline;"> Your account </a>
+                                    </h3>
+                                </td>
 
 
-                            <table class="column">
-                                <tr>
-                                    <td class="padding">
-                                        <table class="content">
-                                            <tr>
-                                                <td>
-                                                    <p style="font-weight: bold; font-size: 17px">Ecommerce</p>
-                                                    <p>
-                                                        Responsive HTML Email Course to master email development.
-                                                    </p>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td style="background-color: #2a5ac9; color: #FFFFFF">
-                <table width="100%">
-                    <tr>
-                        <td class="two-columns last">
-
-                            <table class="column">
-                                <tr>
-                                    <td class="padding">
-                                        <table class="content">
-                                            <tr>
-                                                <td>
-                                                    <p style="font-weight: bold; font-size: 18px">
-                                                        Create Custom Designs
-                                                    </p>
-
-                                                    <p style="padding-bottom: 16px; color: #FFFFFF">HTML Email Template Built From
-                                                        Scratch -
-                                                        2022. In this tutorial we'll build an HTML
-                                                        Email Template with only HTML & CSS.
-                                                        Download the tutorial starter files:
-                                                    </p>
-                                                    <a th:href="${url}" class="button">Read More</a>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </td>
-                    </tr>
-
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td style="padding: 15px 0 50px">
-                <table width="100%">
-                    <tr>
-                        <td style="text-align: center; padding: 15px">
-                            <p style="font-size: 20px; font-weight: bold">
-                                HTML Email Template Course
-                            </p>
-                            <p style="line-height: 23px; font-size: 15px; padding: 5px 0 15px">
-                                HTML Email Template Built From Scratch -
-                                2022. In this tutorial we'll build an HTML Email
-                                Template with only HTML & CSS.
-                                Download the tutorial starter files:
-                                ➢HTML Email Course:
-                                https://responsivehtmlemail.com/course/
-                            </p>
-                            <a href="#" class="button-dar">View Course</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td style="background-color: #2a5ac9">
-                <table width="100%">
-                    <tr>
-                        <td style="text-align: center; padding: 45px 23px; color: #FFFFFF">
-                            <p style="padding: 10px; color: #FFFFFF">
-                                Real Estate AM Email
-                            </p>
-                            <p style="padding: 10px; color: #FFFFFF">
-                                123 Street Road, New York
-                            </p>
-                            <p style="padding: 10px">Real Estate AM</p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-
-    </table>
-</center>
-
+                            </tr>
+                            <tr>
+                                <td style="padding:0;">
+                                    <table role="presentation"
+                                           style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
+                                        <tr>
+                                            <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
+                                                <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                    <img src="https://assets.codepen.io/210284/left.gif" alt=""
+                                                         width="260" style="height:auto;display:block;"/></p>
+                                                <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus
+                                                    adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi
+                                                    porttitor, eget accumsan dictum, est nisi libero ultricies ipsum, in
+                                                    posuere mauris neque at erat.</p>
+                                                <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                    <a href="http://www.example.com"
+                                                       style="color:#ee4c50;text-decoration:underline;">Blandit ipsum
+                                                        volutpat sed</a></p>
+                                            </td>
+                                            <td style="width:20px;padding:0;font-size:0;line-height:0;">&nbsp;</td>
+                                            <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
+                                                <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                    <img src="https://assets.codepen.io/210284/right.gif" alt=""
+                                                         width="260" style="height:auto;display:block;"/></p>
+                                                <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                    Morbi porttitor, eget est accumsan dictum, nisi libero ultricies
+                                                    ipsum, in posuere mauris neque at erat. Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit. In tempus adipiscing felis, sit amet
+                                                    blandit ipsum volutpat sed.</p>
+                                                <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                    <a href="http://www.example.com"
+                                                       style="color:#ee4c50;text-decoration:underline;">In tempus felis
+                                                        blandit</a></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:30px;background:#ee4c50;">
+                        <table role="presentation"
+                               style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;">
+                            <tr>
+                                <td style="padding:0;width:50%;" align="left">
+                                    <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
+                                        &reg; Someone, Somewhere 2021<br/><a href="http://www.example.com"
+                                                                             style="color:#ffffff;text-decoration:underline;">Unsubscribe</a>
+                                    </p>
+                                </td>
+                                <td style="padding:0;width:50%;" align="right">
+                                    <table role="presentation"
+                                           style="border-collapse:collapse;border:0;border-spacing:0;">
+                                        <tr>
+                                            <td style="padding:0 0 0 10px;width:38px;">
+                                                <a href="http://www.twitter.com/" style="color:#ffffff;"><img
+                                                        src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter"
+                                                        width="38" style="height:auto;display:block;border:0;"/></a>
+                                            </td>
+                                            <td style="padding:0 0 0 10px;width:38px;">
+                                                <a href="http://www.facebook.com/" style="color:#ffffff;"><img
+                                                        src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook"
+                                                        width="38" style="height:auto;display:block;border:0;"/></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 </body>
+</html>

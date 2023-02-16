@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
-
     <meta charset="UTF-8">
-    <title>Contact Page</title>
+    <title>My account</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -31,7 +30,9 @@
     <!-- slitslider -->
 </head>
 <body>
+
 <div class="navbar-wrapper">
+
     <div class="navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -50,9 +51,10 @@
                     <li><a href="/about">About</a></li>
                     <li><a href="/agents">Agents</a></li>
                     <li><a href="/blog">Blog</a></li>
-                    <li class="active"><a href="/contact">Contact</a></li>
-                    <li><a href="/myAccount">My Account</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li class="active"><a href="/myAccount">My Account</a></li>
                     <li><a href="/logout">Logout</a></li>
+                    <li><a href="/message">Messages</a></li>
                 </ul>
             </div>
         </div>
@@ -68,40 +70,45 @@
         </ul>
     </div>
 </div>
-<!-- banner -->
+
 <div class="inside-banner">
     <div class="container">
-        <span class="pull-right"><a href="/">Home</a> / Contact Us</span>
-        <h2>Contact Us</h2>
+        <span class="pull-right"><a href="/">Home</a> / <a href="/addHome">Add home</a></span>
+        <h2>My Account</h2>
     </div>
 </div>
 
 <div class="container">
-    <div class="spacer">
-        <div class="row contact">
-            <div class="col-lg-6 col-sm-6 ">
+    <div class="spacer agents">
 
-
-                <input type="text" class="form-control" placeholder="Full Name">
-                <input type="text" class="form-control" placeholder="Email Address">
-                <input type="text" class="form-control" placeholder="Contact Number">
-                <textarea rows="6" class="form-control" placeholder="Message"></textarea>
-
-
-                <button type="submit" class="btn btn-success" name="Submit">Send Message</button>
-
-
-            </div>
-            <div class="col-lg-6 col-sm-6 ">
-                <div class="well">
-                    <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.914707981716!2d-73.98784229731935!3d40.74842278504184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e1!3m2!1sen!2s!4v1676404962529!5m2!1sen!2s"></iframe>
+        <div class="row">
+            <div class="col-lg-8  col-lg-offset-2 col-sm-12">
+                <!-- agents -->
+                <div class="row" th:each="userl : ${userList}">
+                    <div class="col-lg-2 col-sm-2 "><a href="/editProfile">
+                        <img th:src="@{/image(name=${userl.profilePic})}" style="border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #72b70f;
+  height: 100px;
+  width: 100px;" class="img-responsive"/></a></div>
+                    <div class="col-lg-7 col-sm-7 "><h4 th:text="${userl.name}"></h4>
+                        <h5 th:text="${userl.surname}"></h5>
+                        <h5 th:text="${userl.localDate}"></h5>
+                        <h5 th:text="${activate}"></h5>
+                    </div>
+                    <div class="col-lg-3 col-sm-3 "><span class="glyphicon glyphicon-envelope"></span> <a
+                            th:href="'mailto:' + ${userl.email}" th:text="${userl.email}"></a><br>
+                        <span class="glyphicon glyphicon-earphone"></span> <em th:text="${userl.phoneNumber}"></em>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<footer th:insert="footer :: footer"></footer>
+<div style="text-align: center">
+    <button style="height:40px;width:200px;" class="btn btn-success center" onclick="window.location.href='/editProfile';">Edit Profile</button>
+</div>
 
 </body>
 </html>

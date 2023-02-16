@@ -21,6 +21,9 @@ public class User {
     private String name;
     private String surname;
     private String email;
+
+    @JoinColumn(name = "profile_pic")
+    private String profilePic;
     @JoinColumn(name = "phone_number")
     private int phoneNumber;
     @JoinColumn(name = "local_date")
@@ -37,12 +40,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && phoneNumber == user.phoneNumber && token == user.token && isActive == user.isActive && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(localDate, user.localDate) && Objects.equals(password, user.password) && userType == user.userType;
+        return id == user.id && phoneNumber == user.phoneNumber && token == user.token && isActive == user.isActive && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(profilePic, user.profilePic) && Objects.equals(localDate, user.localDate) && Objects.equals(password, user.password) && userType == user.userType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, email, phoneNumber, localDate, token, isActive, password, userType);
+        return Objects.hash(id, name, surname, email, profilePic, phoneNumber, localDate, token, isActive, password, userType);
     }
 
     @Override
@@ -52,6 +55,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
+                ", profilePic='" + profilePic + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", localDate=" + localDate +
                 ", token=" + token +

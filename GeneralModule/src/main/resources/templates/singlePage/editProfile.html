@@ -4,7 +4,7 @@
     <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
 
     <meta charset="UTF-8">
-    <title>Register Page</title>
+    <title>Edit profile Page</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -33,39 +33,38 @@
 <body><!-- banner -->
 <div class="inside-banner">
     <div class="container">
-        <span class="pull-right"><a href="/">Home</a> / Register</span>
-        <h2>Register</h2>
+        <span class="pull-right"><a href="/">Home</a> / Edit profile</span>
+        <h2>Edit profile</h2>
     </div>
 </div>
 <br>
-<h3 th:text="${exist}" style="text-align: center; color: red"></h3>
+<div>
+    <form action="/updateProfile" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="spacer">
+                <div class="row register">
+                    <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 "
+                         th:each="users : ${userData}">
+                        <input type="hidden" class="form-control" name="id"  th:value="${users.id}">
+                        <input type="text" class="form-control" th:value="${users.name}" placeholder="Full Name"
+                               name="name" required="required">
+                        <input type="text" class="form-control" th:value="${users.surname}" placeholder="Full Surname"
+                               name="surname"
+                               required="required">
+                        <input type="number" class="form-control" th:value="${users.phoneNumber}"
+                               placeholder="Enter phone number" name="phoneNumber"
+                               required="required" max="2147483647">
+                        <input type="file" class="form-control"  name="image" required="required"/><br>
 
-<!-- banner -->
-<form action="/save" method="post" enctype="multipart/form-data">
-    <div class="container">
-        <div class="spacer">
-            <div class="row register">
-                <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
-
-                    <input type="text" class="form-control" placeholder="Full Name" name="name" required="required">
-                    <input type="text" class="form-control" placeholder="Full Surname" name="surname"
-                           required="required">
-                    <input type="email" class="form-control" placeholder="Enter Email" name="email" required="required">
-                    <input type="number" class="form-control" placeholder="Enter phone number" name="phoneNumber"
-                           required="required" max="2147483647">
-                    <input type="file" class="form-control" name="image" required="required"/><br>
-
-                    <input type="password" class="form-control" placeholder="Password" onchange="onChange()" required
-                           minlength="6" name="password">
-                    <input type="password" class="form-control" placeholder="Confirm Password" onchange="onChange()"
-                           required minlength="6" name="confirm">
-
-                    <button type="submit" class="btn btn-success" name="Submit">Register</button>
+                        <button type="submit" class="btn btn-success" name="Submit">Update</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+
+</div>
+<!-- banner -->
 
 <footer th:insert="footer :: footer"></footer>
 <script>

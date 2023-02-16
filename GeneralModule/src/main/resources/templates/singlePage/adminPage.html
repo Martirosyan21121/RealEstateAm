@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
+    <meta charset="UTF-8">
+    <title>My account</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="assets/style.css"/>
+    <link rel="stylesheet" href="assets/Table.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/script.js"></script>
+
+
+
+    <!-- Owl stylesheet -->
+    <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+    <script src="assets/owl-carousel/owl.carousel.js"></script>
+    <!-- Owl stylesheet -->
+
+
+    <!-- slitslider -->
+    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/custom.css"/>
+    <script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
+    <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
+    <!-- slitslider -->
+</head>
+<body>
+
+<div class="navbar-wrapper">
+
+    <div class="navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Nav Starts -->
+            <div class="navbar-collapse  collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/agents">Agents</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="header">
+        <a href="/"><img src="images/logo.png" alt="Realestate"></a>
+        <ul class="pull-right">
+            <li><a href="/buysalerent">Buy</a></li>
+            <li><a href="/buysalerent">Sale</a></li>
+            <li><a href="/buysalerent">Rent</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="inside-banner">
+    <div class="container">
+        <span class="pull-right"><a href="/">Home</a> / Admin Page</span>
+        <h2>Admin Page</h2>
+        <h3 style="text-align: center; color: white">Users quantity` <h3 th:text="${usersSize}" style="color: white; text-align: center"></h3> </h3>
+    </div>
+</div>
+
+<div class="main">
+
+    <!-- Actual search box -->
+    <div class="form-group has-feedback has-search">
+        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search for Emails..">
+    </div>
+
+</div>
+
+
+<table style="  margin-left: auto;
+  margin-right: auto;" id="myTable">
+    <thead>
+    <tr>
+    <tr class="header">
+        <th style="width:5%; text-align: center">ID</th>
+        <th style="width:10%; text-align: center">Name</th>
+        <th style="width:5%; text-align: center">Surname</th>
+        <th style="width:15%; text-align: center">Email</th>
+        <th style="width:15%; text-align: center">Phone Number</th>
+        <th style="width:1%; text-align: center">Active</th>
+        <th style="width:15%; text-align: center">Register Date</th>
+        <th style="width:15%; text-align: center">Pic Url</th>
+        <th style="width: 5%; text-align: center">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="users : ${usersAdmin}">
+        <td th:text="${users.id}" style="text-align: center"></td>
+        <td th:text="${users.name}" style="text-align: center"></td>
+        <td th:text="${users.surname}" style="text-align: center"></td>
+        <td th:text="${users.email}" style="text-align: center"></td>
+        <td th:text="${users.phoneNumber}" style="text-align: center"></td>
+        <td th:text="${users.active}" style="text-align: center"></td>
+        <td th:text="${users.localDate}" style="text-align: center"></td>
+        <td th:text="${users.profilePic}" style="text-align: center"></td>
+        <td><a th:href="@{/user/delete(id=${users.id})}" style="text-align: center" class="delete-button">DELETE</a></td>
+
+    </tbody>
+</table>
+
+<footer th:insert="footer :: footer"></footer>
+<script>
+    //email search function
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

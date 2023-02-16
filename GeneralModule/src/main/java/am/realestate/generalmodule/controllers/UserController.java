@@ -6,25 +6,31 @@ import am.realestate.reposerviceconfig.service.EmailService;
 import am.realestate.reposerviceconfig.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.swing.text.html.Option;
+import java.io.File;
+import java.io.IOException;
+import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 @Slf4j
 public class UserController {
 
+    @Value("${file.upload.dir}")
+    private String uploadDir;
     @Autowired
     public UserService userService;
 
@@ -42,14 +48,19 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    private String save(@ModelAttribute User user, ModelMap modelMap, Locale locale) throws MessagingException {
+    private String save(@ModelAttribute User user, ModelMap modelMap, Locale locale, @RequestParam("image") MultipartFile file) throws MessagingException, IOException {
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         if (byEmail.isPresent()) {
             log.info("email already exist = {}", user.getEmail());
             String msg = "Your email` " + user.getEmail() + " already exist";
             modelMap.addAttribute("exist", msg);
             return "register";
+
         } else {
+            String profilePic = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            File image = new File(uploadDir, profilePic);
+            file.transferTo(image);
+            user.setProfilePic(profilePic);
             user.setActive(false);
             user.setUserType(UserType.USER);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -57,11 +68,14 @@ public class UserController {
             user.setLocalDate(LocalDate.from(localDate));
             userService.saveUser(user);
             log.info("user saved = {}", user.getEmail());
-            String link = "http://localhost:8080/";
-            emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/registerEmail.html", locale);
-            return "firstPages/index";
+//
+//            String link = "http://localhost:8080/myAccount";
+//            emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/registerEmail.html", locale);
+            return "redirect:/";
         }
     }
+
+
 
     @PostMapping("/activate")
     private String activate(@ModelAttribute User user, Random random, ModelMap modelMap) {
@@ -122,7 +136,6 @@ public class UserController {
             emailService.send(user1.getEmail(), "Email verification", "Dear " + user1.getName() + " " + user1.getSurname() + "  \n This is Your verification code \n " + verificationCode);
             return "verification/verifyCode";
         }
-
     }
 
     @PostMapping("/resetPassword")
@@ -154,5 +167,66 @@ public class UserController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("/myAccount")
+    private String myAccount(@ModelAttribute User user, Principal principal, ModelMap modelMap) {
+        String email = principal.getName();
+        Optional<User> userOptional = userService.findByEmail(email);
+        User user1 = userOptional.get();
+        if (user1.isActive()) {
+            List<User> userList = new ArrayList<>();
+            userOptional.ifPresent(userList::add);
+            for (User u : userList) {
+                log.info("USER account data - user.name = {}", u.getName());
+                log.info(" user.surname = {}", u.getSurname());
+                log.info(" user.email = {}", u.getEmail());
+            }
+            String activate = "Activate";
+            modelMap.addAttribute("userList", userList);
+            modelMap.addAttribute("activate", activate);
+            return "singlePage/userSinglePage";
+        } else {
+            return "verification/emailActivate";
+        }
+    }
+
+    @GetMapping("/editProfile")
+    private String editProfile(Principal principal, ModelMap modelMap) {
+        Optional<User> userOptional = userService.findByEmail(principal.getName());
+        log.info("Started edit profile with email = {}", userOptional);
+        List<User> userList = new ArrayList<>();
+        userOptional.ifPresent(userList::add);
+        modelMap.addAttribute("userData", userList);
+        return "singlePage/editProfile";
+    }
+
+    @PostMapping("/updateProfile")
+    private String editProfile(@ModelAttribute User user, @RequestParam("id") long id, Locale locale, @RequestParam("image") MultipartFile file) throws MessagingException, IOException {
+        Optional<User> userOptional = userService.findUserById(id);
+        log.info("Optional user = {}", userOptional);
+        log.info("Optional user id = {}", id);
+        String profilePic = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        File image = new File(uploadDir, profilePic);
+        file.transferTo(image);
+        User user1 = userOptional.get();
+        user.setActive(true);
+        user.setEmail(user1.getEmail());
+        user.setToken(user1.getToken());
+        user.setUserType(user1.getUserType());
+        user.setProfilePic(profilePic);
+        user.setLocalDate(LocalDate.from(user1.getLocalDate()));
+        user.setPassword(user1.getPassword());
+        log.info("User Update data = {}", user);
+        userService.saveUser(user);
+        log.info("Account update = {}", user);
+        log.info("user saved = {}", user.getEmail());
+//
+//        String link = "http://localhost:8080/myAccount";
+//        emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/updateAccount.html", locale);
+        return "redirect:/myAccount";
+
+    }
+
+
 }
 

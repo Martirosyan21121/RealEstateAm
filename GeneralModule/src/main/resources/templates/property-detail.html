@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
 
@@ -91,8 +91,9 @@
             </div>
 
             <div class="col-lg-9 col-sm-8 ">
-
-                <h2>2 room and 1 kitchen apartment</h2>
+                <h2>Code D.P
+                    <data th:text="${homeData.homeCode}"></data>
+                </h2>
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="property-images">
@@ -143,19 +144,16 @@
 
 
                         <div class="spacer"><h4><span class="glyphicon glyphicon-th-list"></span> Properties Detail</h4>
-                            <p>Efficiently unleash cross-media information without cross-media value. Quickly maximize
-                                timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar
-                                solutions without functional solutions.</p>
-                            <p>Completely synergize resource sucking relationships via premier niche markets.
-                                Professionally cultivate one-to-one customer service with robust ideas. Dynamically
-                                innovate resource-leveling customer service for state of the art customer service</p>
+                            <h5 th:text="${homeData.description}">
+                            </h5>
 
                         </div>
-                        <div><h4><span class="glyphicon glyphicon-map-marker"></span> Location</h4>
+                        <div><h4><span class="glyphicon glyphicon-map-marker"></span>You can search home location in
+                            this map</h4>
                             <div class="well">
                                 <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0"
                                         marginwidth="0"
-                                        src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Pulchowk,+Patan,+Central+Region,+Nepal&amp;aq=0&amp;oq=pulch&amp;sll=37.0625,-95.677068&amp;sspn=39.371738,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Pulchowk,+Patan+Dhoka,+Patan,+Bagmati,+Central+Region,+Nepal&amp;ll=27.678236,85.316853&amp;spn=0.001347,0.002642&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.914707981716!2d-73.98784229731935!3d40.74842278504184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e1!3m2!1sen!2s!4v1676404962529!5m2!1sen!2s"></iframe>
                             </div>
                         </div>
 
@@ -163,37 +161,45 @@
                     <div class="col-lg-4">
                         <div class="col-lg-12  col-sm-6">
                             <div class="property-info">
-                                <p class="price">$ 200,000,000</p>
-                                <p class="area"><span class="glyphicon glyphicon-map-marker"></span> 344 Villa, Syndey,
-                                    Australia</p>
+                                <p class="price">$
+                                    <data th:text="${homeData.price}"></data>
+                                </p>
+                                <p class="area"><span class="glyphicon glyphicon-map-marker"></span>
+                                    <data th:text="${homeData.address}"></data>
 
                                 <div class="profile">
-                                    <span class="glyphicon glyphicon-user"></span> Agent Details
-                                    <p>John Parker<br>009 229 2929</p>
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <data th:text="${homeData.userId.name}"></data>
+                                    <data th:text="${homeData.userId.surname}"></data>
+                                    <br>
+                                    <span class="glyphicon glyphicon-phone"></span>
+                                    <data th:text="${homeData.userId.phoneNumber}"></data>
+
                                 </div>
                             </div>
 
-                            <h6><span class="glyphicon glyphicon-home"></span> Availabilty</h6>
+                            <h6><span class="glyphicon glyphicon-home"></span> Availability </h6>
                             <div class="listing-detail">
                                 <span data-toggle="tooltip" data-placement="bottom"
-                                      data-original-title="Bed Room">5</span> <span data-toggle="tooltip"
-                                                                                    data-placement="bottom"
-                                                                                    data-original-title="Living Room">2</span>
+                                      data-original-title="Bed Room" th:text="${homeData.bedroom}"></span> <span
+                                    data-toggle="tooltip"
+                                    data-placement="bottom"
+                                    data-original-title="Living Room" th:text="${homeData.livingroom}"></span>
                                 <span data-toggle="tooltip" data-placement="bottom"
-                                      data-original-title="Parking">2</span> <span data-toggle="tooltip"
-                                                                                   data-placement="bottom"
-                                                                                   data-original-title="Kitchen">1</span>
+                                      data-original-title="Parking" th:text="${homeData.parking}"></span> <span
+                                    data-toggle="tooltip"
+                                    data-placement="bottom"
+                                    data-original-title="Kitchen" th:text="${homeData.kitchen}"></span>
                             </div>
 
                         </div>
                         <div class="col-lg-12 col-sm-6 ">
                             <div class="enquiry">
                                 <h6><span class="glyphicon glyphicon-envelope"></span> Post Enquiry</h6>
-                                <form role="form">
-                                    <input type="text" class="form-control" placeholder="Full Name"/>
-                                    <input type="text" class="form-control" placeholder="you@yourdomain.com"/>
-                                    <input type="text" class="form-control" placeholder="your number"/>
-                                    <textarea rows="6" class="form-control"
+                                <form action="/sendMessage" method="post">
+                                    <input type="hidden" name="forTo" th:value="${homeData.userId.email}">
+                                    <input type="text" name="subject" class="form-control" placeholder="subject"/>
+                                    <textarea rows="6" name="text" class="form-control"
                                               placeholder="Whats on your mind?"></textarea>
                                     <button type="submit" class="btn btn-primary" name="Submit">Send Message</button>
                                 </form>
