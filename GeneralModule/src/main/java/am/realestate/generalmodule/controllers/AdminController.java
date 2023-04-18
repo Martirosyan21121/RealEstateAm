@@ -5,27 +5,25 @@ import am.realestate.reposerviceconfig.repo.UserRepo;
 import am.realestate.reposerviceconfig.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Controller
 @Slf4j
-public class  AdminController {
+public class AdminController {
 
     @Autowired
     public UserService userService;
 
     @Autowired
     public UserRepo userRepo;
+
     @GetMapping("/admin111")
-    public String admin(Model modelMap){
+    public String admin(Model modelMap) {
         log.info("Admin page");
         List<User> user = userService.findAllUsers();
         modelMap.addAttribute("usersAdmin", user);

@@ -54,6 +54,8 @@ public class SecurityConfiguration {
                 .hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET,"/admin111")
                 .hasAnyAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET,"/user/delete")
+                .hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.GET,"/editProfile")
                 .hasAnyAuthority("USER","ADMIN")
                 .antMatchers(HttpMethod.POST,"/updateProfile")
@@ -64,7 +66,7 @@ public class SecurityConfiguration {
                 .hasAnyAuthority("USER")
                 .antMatchers(HttpMethod.POST,"/sendMessage")
                 .hasAnyAuthority("USER")
-                .antMatchers(HttpMethod.GET,"/message")
+                .antMatchers(HttpMethod.GET,"/userMessage")
                 .hasAnyAuthority("USER")
                 .and()
                 .formLogin()
@@ -82,3 +84,4 @@ public class SecurityConfiguration {
         return http.build();
     }
 }
+

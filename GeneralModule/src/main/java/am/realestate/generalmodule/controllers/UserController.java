@@ -47,6 +47,7 @@ public class UserController {
         return "login";
     }
 
+
     @PostMapping("/save")
     private String save(@ModelAttribute User user, ModelMap modelMap, Locale locale, @RequestParam("image") MultipartFile file) throws MessagingException, IOException {
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
@@ -68,13 +69,12 @@ public class UserController {
             user.setLocalDate(LocalDate.from(localDate));
             userService.saveUser(user);
             log.info("user saved = {}", user.getEmail());
-//
-//            String link = "http://localhost:8080/myAccount";
-//            emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/registerEmail.html", locale);
+
+            String link = "http://localhost:8080/myAccount";
+            emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/registerEmail.html", locale);
             return "redirect:/";
         }
     }
-
 
 
     @PostMapping("/activate")
@@ -220,13 +220,11 @@ public class UserController {
         userService.saveUser(user);
         log.info("Account update = {}", user);
         log.info("user saved = {}", user.getEmail());
-//
-//        String link = "http://localhost:8080/myAccount";
-//        emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/updateAccount.html", locale);
+
+        String link = "http://localhost:8080/myAccount";
+        emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/updateAccount.html", locale);
         return "redirect:/myAccount";
 
     }
-
-
 }
 
