@@ -220,7 +220,7 @@
         <div id="owl-example" class="owl-carousel" >
 
             <div class="properties" th:each="homesData : ${homes}">
-                <div class="image-holder"><img src="images/properties/1.jpg" class="img-responsive" alt="properties"/>
+                <div class="image-holder"><img src="/images/properties/1.jpg" class="img-responsive" alt="properties"/>
                     <div class="status rent" th:if="${homesData.homeType.name() == 'RENT'}"> For Rent </div>
                     <div class="status sold" th:if="${homesData.homeType.name()  == 'SELL'}"> For Sell </div>
                     <div class="status new" th:if="${homesData.homeType.name()  == 'BUY'}"> For Buy </div>

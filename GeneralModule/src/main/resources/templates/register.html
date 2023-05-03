@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
+    <style>
+        .input_container {
+            border: 1px solid #e5e5e5;
+        }
+
+        input[type=file]::file-selector-button {
+            background-color: #fff;
+            color: #000;
+            border: 0px;
+            border-right: 1px solid #e5e5e5;
+            padding: 10px 15px;
+            margin-right: 20px;
+            transition: .5s;
+        }
+
+        input[type=file]::file-selector-button:hover {
+            background-color: #eee;
+            border: 0px;
+            border-right: 1px solid #e5e5e5;
+        }
+
+    </style>
+
     <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
 
     <meta charset="UTF-8">
@@ -53,7 +77,8 @@
                     <input type="email" class="form-control" placeholder="Enter Email" name="email" required="required">
                     <input type="number" class="form-control" placeholder="Enter phone number" name="phoneNumber"
                            required="required" max="2147483647">
-                    <input type="file" class="form-control" name="image" required="required"/><br>
+
+                    <input id="fileUpload" type="file" class="form-control input_container" name="image" required="required"/><br>
 
                     <input type="password" class="form-control" placeholder="Password" onchange="onChange()" required
                            minlength="6" name="password">

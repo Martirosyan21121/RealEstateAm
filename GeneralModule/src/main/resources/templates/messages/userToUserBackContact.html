@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
+    <link rel="icon" href="/images/logo.png" type="image/gif" sizes="any">
     <meta charset="UTF-8">
-    <title>My account</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Messages sent to you</title>
 
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="assets/style.css"/>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/assets/style.css"/>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.js"></script>
     <script src="assets/script.js"></script>
@@ -27,12 +25,61 @@
     <script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
     <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
     <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
-    <!-- slitslider -->
+    <style>
+        .container2 {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        /* Darker chat container */
+        .darker2 {
+            border-color: #ccc;
+            background-color: #ddd;
+        }
+
+        /* Clear floats */
+        .container2::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Style images */
+        .container2 img {
+            float: left;
+            max-width: 40px;
+            width: 100%;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        /* Style the right image */
+        .container2 img.right {
+            float: right;
+            margin-left: 20px;
+            margin-right: 0;
+        }
+
+        /* Style time text */
+        .time-right {
+            float: right;
+            color: #aaa;
+        }
+
+        /* Style time text */
+        .time-left {
+            float: left;
+            color: #999;
+        }
+    </style>
 </head>
 <body>
 
-<div class="navbar-wrapper">
 
+<div class="navbar-wrapper">
     <div class="navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -52,9 +99,7 @@
                     <li><a href="/agents">Agents</a></li>
                     <li><a href="/blog">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <li class="active"><a href="/myAccount">My Account</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                    <li><a href="/messageUserToUser">Messages</a></li>
+                    <li><a href="/myAccount">My Account</a></li>
                 </ul>
             </div>
         </div>
@@ -70,46 +115,33 @@
         </ul>
     </div>
 </div>
-
+<!-- banner -->
 <div class="inside-banner">
     <div class="container">
-        <span class="pull-right"><a href="/">Home</a> / <a href="/addHome">Add home</a></span>
-        <h2>My Account</h2>
+        <span class="pull-right"><a href="/">Home</a> / <a href="/messageUserToUser">
+Messages you sent</a></span>
+        <h2>Messages sent to you</h2>
     </div>
+
+
 </div>
-
 <div class="container">
-    <div class="spacer agents">
-
+    <div class="spacer blog">
         <div class="row">
-            <div class="col-lg-8  col-lg-offset-2 col-sm-12">
 
-                <!-- agents -->
-                <div class="row" th:each="userl : ${userList}">
-                    <div class="col-lg-2 col-sm-2 "><a href="/myAccount/editProfile">
-                        <img th:src="@{/image(name=${userl.profilePic})}" style="border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  background-color: #72b70f;
-  height: 100px;
-  width: 100px;" class="img-responsive"/></a></div>
-                    <div class="col-lg-7 col-sm-7 "><h4 th:text="${userl.name}"></h4>
-                        <h5 th:text="${userl.surname}"></h5>
-                        <h5 th:text="${userl.localDate}"></h5>
-                        <h5 th:text="${activate}"></h5>
-                    </div>
-                    <div class="col-lg-3 col-sm-3 "><span class="glyphicon glyphicon-envelope"></span> <a
-                            th:text="${userl.email}"></a><br>
-                        <span class="glyphicon glyphicon-earphone"></span> <em th:text="${userl.phoneNumber}"></em>
-                    </div>
+            <h2 style="text-align: center">Messages sent to you</h2>
+
+                <div class="container2 darker" th:each="messages : ${message}">
+                    <img th:src="@{/image(name=${messages.userId.profilePic})}" alt="Avatar" class="right">
+                    <a th:href="'mailto:' + ${messages.userId.email}"><h5 th:text="${messages.userId.email}" style="color: #64a30a"></h5></a>
+                    <p th:text="${messages.userId.name}"></p>
+                    <p th:text="${messages.text}"></p>
+                    <span class="time-left">11:01 / </span> <span class="time-left"> 11:01</span>
                 </div>
-            </div>
         </div>
     </div>
 </div>
-<div style="text-align: center">
-    <a style="height:40px;width:200px;" class="btn btn-success center" href="/myAccount/editProfile">Edit Profile</a>
-</div>
+
 
 </body>
 </html>

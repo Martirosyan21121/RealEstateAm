@@ -1,33 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
+    <style>
+        .input_container {
+            border: 1px solid #e5e5e5;
+        }
+
+        input[type=file]::file-selector-button {
+            background-color: #fff;
+            color: #000;
+            border: 0px;
+            border-right: 1px solid #e5e5e5;
+            padding: 10px 15px;
+            margin-right: 20px;
+            transition: .5s;
+        }
+
+        input[type=file]::file-selector-button:hover {
+            background-color: #eee;
+            border: 0px;
+            border-right: 1px solid #e5e5e5;
+        }
+
+    </style>
+    <link rel="icon" href="/images/logo.png" type="image/gif" sizes="any">
 
     <meta charset="UTF-8">
     <title>Edit profile Page</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" href="assets/style.css"/>
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.js"></script>
-    <script src="assets/script.js"></script>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/assets/style.css"/>
+    <script src="/http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.js"></script>
+    <script src="/assets/script.js"></script>
 
 
     <!-- Owl stylesheet -->
-    <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
-    <script src="assets/owl-carousel/owl.carousel.js"></script>
+    <link rel="stylesheet" href="/assets/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/owl-carousel/owl.theme.css">
+    <script src="/assets/owl-carousel/owl.carousel.js"></script>
     <!-- Owl stylesheet -->
 
 
     <!-- slitslider -->
-    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/custom.css"/>
-    <script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
-    <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
-    <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/slitslider/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/slitslider/css/custom.css"/>
+    <script type="text/javascript" src="/assets/slitslider/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="/assets/slitslider/js/jquery.ba-cond.min.js"></script>
+    <script type="text/javascript" src="/ assets/slitslider/js/jquery.slitslider.js"></script>
     <!-- slitslider -->
 </head>
 <body><!-- banner -->
@@ -54,8 +76,7 @@
                         <input type="number" class="form-control" th:value="${users.phoneNumber}"
                                placeholder="Enter phone number" name="phoneNumber"
                                required="required" max="2147483647">
-                        <input type="file" class="form-control"  name="image" required="required"/><br>
-
+                            <input type="file" id="fileUpload" class="form-control input_container" name="image" required="required"/><br>
                         <button type="submit" class="btn btn-success" name="Submit">Update</button>
                     </div>
                 </div>
@@ -67,17 +88,6 @@
 <!-- banner -->
 
 <footer th:insert="footer :: footer"></footer>
-<script>
-    function onChange() {
-        const password = document.querySelector('input[name=password]');
-        const confirm = document.querySelector('input[name=confirm]');
-        if (confirm.value === password.value) {
-            confirm.setCustomValidity('');
-        } else {
-            confirm.setCustomValidity('Passwords do not match');
-        }
 
-    }
-</script>
 </body>
 </html>

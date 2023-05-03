@@ -1,7 +1,6 @@
 package am.realestate.generalmodule.controllers;
 
 import am.realestate.module.Home;
-import am.realestate.module.User;
 import am.realestate.reposerviceconfig.repo.HomeRepo;
 import am.realestate.reposerviceconfig.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,13 +19,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @Slf4j
-public class Index {
+public class IndexController {
 
 
     @Value("${file.upload.dir}")

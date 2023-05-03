@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" href="/images/logo.png" type="image/gif" sizes="any">
+    <meta charset="UTF-8">
+    <title>Your Messages</title>
+
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/assets/style.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/script.js"></script>
+
+
+    <!-- Owl stylesheet -->
+    <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+    <script src="assets/owl-carousel/owl.carousel.js"></script>
+    <!-- Owl stylesheet -->
+
+
+    <!-- slitslider -->
+    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/slitslider/css/custom.css"/>
+    <script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
+    <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
+    <style>
+        .container2 {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        /* Darker chat container */
+        .darker2 {
+            border-color: #ccc;
+            background-color: #ddd;
+        }
+
+        /* Clear floats */
+        .container2::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Style images */
+        .container2 img {
+            float: left;
+            max-width: 50px;
+            width: 100%;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        /* Style the right image */
+        .container2 img.right {
+            float: right;
+            margin-left: 20px;
+            margin-right: 0;
+        }
+
+        /* Style time text */
+        .time-right {
+            float: right;
+            color: #aaa;
+        }
+
+        /* Style time text */
+        .time-left {
+            float: left;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="navbar-wrapper">
+    <div class="navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Nav Starts -->
+            <div class="navbar-collapse  collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/agents">Agents</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/myAccount">My Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="header">
+        <a href="/"><img src="/images/logo.png" alt="Realestate"></a>
+        <ul class="pull-right">
+            <li><a href="/buysalerent">Buy</a></li>
+            <li><a href="/buysalerent">Sale</a></li>
+            <li><a href="/buysalerent">Rent</a></li>
+        </ul>
+    </div>
+</div>
+<!-- banner -->
+<div class="inside-banner">
+    <div class="container">
+        <span class="pull-right"><a href="/">Home</a> / <a href="/msgUserToUserBack">
+Messages sent to you</a></span>
+        <h2>My messages</h2>
+    </div>
+
+
+</div>
+<div class="container">
+    <div class="spacer blog">
+        <div class="row">
+
+            <h2 style="text-align: center">The messages you sent</h2>
+            <div class="container2" th:each="message : ${messages}">
+                <img th:src="@{/image(name=${message.userId.profilePic})}" alt="Avatar">
+                <h5 th:text="${message.userId.email}" style="color: #64a30a"></h5>
+                <p th:text="${message.userId.name}"></p>
+                <a th:href="'mailto:' + ${message.userId.email}"><p th:text="${message.forTo}" style="color: #64a30a"></p></a>
+                <p th:text="${message.text}"></p>
+                <a class="btn btn-danger" th:href="@{/delete/messageUserToUser(id=${message.id})}">DELETE</a>
+                <span class="time-right"> / 11:00</span> <span class="time-right"> 23.12.06 </span>
+            </div>
+
+
+            <!--            <div class="container2 darker">-->
+            <!--                <img src="/images/agents/1.jpg" alt="Avatar" class="right">-->
+            <!--                <h5>Email@Gmail.com</h5>-->
+            <!--                <p>Surname<span> Name</span></p>-->
+            <!--                <p>Hey! I'm fine. Thanks for asking! Hey! I'm fine. Thanks for asking! Hey! I'm fine. Thanks for asking!-->
+            <!--                    Hey! I'm fine. Thanks for asking!Hey! I'm fine. Thanks for asking! Hey! I'm fine. Thanks for asking! Hey! I'm fine. Thanks for asking!-->
+            <!--                    Hey! I'm fine. Thanks for asking!</p>-->
+            <!--                <span class="time-left">11:01 / </span>        <span class="time-left"> 11:01</span>-->
+            <!--            </div>-->
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

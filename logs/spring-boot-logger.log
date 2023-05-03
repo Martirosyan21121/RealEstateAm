@@ -1,72 +1,27 @@
-2023-04-18 19:22:26,074 INFO org.springframework.boot.StartupInfoLogger [main] Starting GeneralModuleApplication using Java 17.0.6 on DESKTOP-Q842RM6 with PID 1848 (D:\RealEstateAM\GeneralModule\target\classes started by ASUS in D:\RealEstateAM)
-2023-04-18 19:22:26,078 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
-2023-04-18 19:22:26,078 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2023-04-18 19:22:26,751 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-04-18 19:22:26,806 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 46 ms. Found 2 JPA repository interfaces.
-2023-04-18 19:22:27,449 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2023-04-18 19:22:27,459 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2023-04-18 19:22:27,459 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
-2023-04-18 19:22:27,459 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.68]
-2023-04-18 19:22:27,560 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2023-04-18 19:22:27,561 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1423 ms
-2023-04-18 19:22:27,745 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-04-18 19:22:27,810 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.12.Final
-2023-04-18 19:22:27,989 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2023-04-18 19:22:28,088 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
-2023-04-18 19:22:28,450 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
-2023-04-18 19:22:28,478 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2023-04-18 19:22:29,364 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-04-18 19:22:29,371 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-04-18 19:22:29,820 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@12aa2cca, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3dc4ed6f, org.springframework.security.web.context.SecurityContextPersistenceFilter@6318ff9, org.springframework.security.web.header.HeaderWriterFilter@46610fc9, org.springframework.security.web.authentication.logout.LogoutFilter@123e9094, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3bd79444, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5655278d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71a7cf7c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2823b7c5, org.springframework.security.web.session.SessionManagementFilter@2cd877d3, org.springframework.security.web.access.ExceptionTranslationFilter@498f5728, org.springframework.security.web.access.intercept.AuthorizationFilter@7b11ff9a]
-2023-04-18 19:22:29,853 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-04-18 19:22:30,095 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2023-04-18 19:22:30,110 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2023-04-18 19:22:30,118 INFO org.springframework.boot.StartupInfoLogger [main] Started GeneralModuleApplication in 4.531 seconds (JVM running for 5.395)
-2023-04-18 19:22:38,641 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-04-18 19:22:38,641 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2023-04-18 19:22:38,642 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2023-04-18 19:22:38,708 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-1] home page
-2023-04-18 19:22:46,519 WARN am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-4] Fail login
-2023-04-18 19:22:50,326 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-2] USER account data - user.name = James
-2023-04-18 19:22:50,327 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-2]  user.surname = Harden
-2023-04-18 19:22:50,327 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-2]  user.email = Harden13@gmail.com
-2023-04-18 19:22:50,434 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-4] image name = 1676372720848_Harden.jpg
-2023-04-18 19:22:53,124 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-3] home page
-2023-04-18 19:23:00,605 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-6] home page
-2023-04-18 19:23:14,486 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-2] home page
-2023-04-18 19:23:28,386 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-4] home page
-2023-04-18 19:23:46,369 INFO am.realestate.generalmodule.controllers.AdminController [http-nio-8080-exec-10] Admin page
-2023-04-18 19:23:46,374 INFO am.realestate.generalmodule.controllers.AdminController [http-nio-8080-exec-10] All user size = 10
-2023-04-18 19:24:07,420 INFO am.realestate.generalmodule.controllers.AdminController [http-nio-8080-exec-8] deleted USER id = 33
-2023-04-18 19:24:07,426 INFO am.realestate.generalmodule.controllers.AdminController [http-nio-8080-exec-1] Admin page
-2023-04-18 19:24:07,429 INFO am.realestate.generalmodule.controllers.AdminController [http-nio-8080-exec-1] All user size = 9
-2023-04-18 19:24:15,533 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-6] home page
-2023-04-18 19:24:17,570 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-4] USER account data - user.name = Narek
-2023-04-18 19:24:17,570 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-4]  user.surname = Martirosyan
-2023-04-18 19:24:17,570 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-4]  user.email = narek@nm
-2023-04-18 19:24:17,622 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-9] image name = 1676372290686_Screenshot 2023-01-23 165256.png
-2023-04-18 19:24:23,704 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-8] home page
-2023-04-18 19:24:34,528 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-5] home page
-2023-04-18 19:24:38,692 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-5] USER account data - user.name = James
-2023-04-18 19:24:38,692 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-5]  user.surname = Harden
-2023-04-18 19:24:38,692 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-5]  user.email = Harden13@gmail.com
-2023-04-18 19:24:38,761 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-3] image name = 1676372720848_Harden.jpg
-2023-04-18 19:24:43,634 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-4] Started edit profile with email = Optional[User{id=29, name='James', surname='Harden', email='Harden13@gmail.com', profilePic='1676372720848_Harden.jpg', phoneNumber=13131323, localDate=2023-02-14, token=0, isActive=true, password='$2a$10$UCvH8TNXeJAxzRopXGdFleVfVy5.eM1rEa3pkdl2My/flqzz4TJqC', userType=USER}]
-2023-04-18 19:25:00,117 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-6] Optional user = Optional[User{id=29, name='James', surname='Harden', email='Harden13@gmail.com', profilePic='1676372720848_Harden.jpg', phoneNumber=13131323, localDate=2023-02-14, token=0, isActive=true, password='$2a$10$UCvH8TNXeJAxzRopXGdFleVfVy5.eM1rEa3pkdl2My/flqzz4TJqC', userType=USER}]
-2023-04-18 19:25:00,118 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-6] Optional user id = 29
-2023-04-18 19:25:00,122 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-6] User Update data = User{id=29, name='James', surname='Harden', email='Harden13@gmail.com', profilePic='1681831500118_Screenshot 2022-09-15 162233.png', phoneNumber=1111111, localDate=2023-02-14, token=0, isActive=true, password='$2a$10$UCvH8TNXeJAxzRopXGdFleVfVy5.eM1rEa3pkdl2My/flqzz4TJqC', userType=USER}
-2023-04-18 19:25:00,137 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-6] Account update = User{id=29, name='James', surname='Harden', email='Harden13@gmail.com', profilePic='1681831500118_Screenshot 2022-09-15 162233.png', phoneNumber=1111111, localDate=2023-02-14, token=0, isActive=true, password='$2a$10$UCvH8TNXeJAxzRopXGdFleVfVy5.eM1rEa3pkdl2My/flqzz4TJqC', userType=USER}
-2023-04-18 19:25:00,137 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-6] user saved = Harden13@gmail.com
-2023-04-18 19:25:02,905 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-3] USER account data - user.name = James
-2023-04-18 19:25:02,905 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-3]  user.surname = Harden
-2023-04-18 19:25:02,905 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-3]  user.email = Harden13@gmail.com
-2023-04-18 19:25:02,962 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-8] image name = 1681831500118_Screenshot 2022-09-15 162233.png
-2023-04-18 19:25:09,429 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-5] home page
-2023-04-18 19:25:12,240 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-10] USER account data - user.name = James
-2023-04-18 19:25:12,241 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-10]  user.surname = Harden
-2023-04-18 19:25:12,241 INFO am.realestate.generalmodule.controllers.UserController [http-nio-8080-exec-10]  user.email = Harden13@gmail.com
-2023-04-18 19:25:12,301 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-7] image name = 1681831500118_Screenshot 2022-09-15 162233.png
-2023-04-18 19:25:21,597 INFO am.realestate.generalmodule.controllers.Index [http-nio-8080-exec-6] home page
-2023-04-18 19:29:27,751 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2023-04-18 19:29:27,755 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2023-04-18 19:29:27,761 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-05-01 15:25:59,862 INFO org.springframework.boot.StartupInfoLogger [main] Starting GeneralModuleApplication using Java 17.0.6 on DESKTOP-Q842RM6 with PID 22392 (D:\RealEstateAM\GeneralModule\target\classes started by ASUS in D:\RealEstateAM)
+2023-05-01 15:25:59,865 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2023-05-01 15:25:59,866 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-05-01 15:26:00,687 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-01 15:26:00,746 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 51 ms. Found 3 JPA repository interfaces.
+2023-05-01 15:26:01,375 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2023-05-01 15:26:01,382 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2023-05-01 15:26:01,410 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2023-05-01 15:26:01,410 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-05-01 15:26:01,502 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2023-05-01 15:26:01,503 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1572 ms
+2023-05-01 15:26:01,664 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-01 15:26:01,712 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.12.Final
+2023-05-01 15:26:01,861 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-01 15:26:01,983 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2023-05-01 15:26:02,382 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-05-01 15:26:02,420 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-05-01 15:26:03,096 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-01 15:26:03,104 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-01 15:26:03,634 INFO org.springframework.security.web.DefaultSecurityFilterChain [main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@31e9d94f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69a3944, org.springframework.security.web.context.SecurityContextPersistenceFilter@f0d01c9, org.springframework.security.web.header.HeaderWriterFilter@17d45cfb, org.springframework.security.web.authentication.logout.LogoutFilter@1b868ef0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@36f80ceb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@205b73d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b2c41f9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4987142d, org.springframework.security.web.session.SessionManagementFilter@1c65ec63, org.springframework.security.web.access.ExceptionTranslationFilter@608c7b5b, org.springframework.security.web.access.intercept.AuthorizationFilter@572db5ee]
+2023-05-01 15:26:03,668 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-01 15:26:03,990 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2023-05-01 15:26:04,016 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2023-05-01 15:26:04,026 INFO org.springframework.boot.StartupInfoLogger [main] Started GeneralModuleApplication in 4.544 seconds (JVM running for 7.271)
+2023-05-01 15:45:19,282 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-01 15:45:19,284 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-05-01 15:45:19,299 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

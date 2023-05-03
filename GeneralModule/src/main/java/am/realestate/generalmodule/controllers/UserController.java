@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
-import javax.swing.text.html.Option;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
@@ -76,7 +74,6 @@ public class UserController {
         }
     }
 
-
     @PostMapping("/activate")
     private String activate(@ModelAttribute User user, Random random, ModelMap modelMap) {
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
@@ -112,6 +109,7 @@ public class UserController {
             return "redirect:/?msg=User is Activated";
         }
     }
+
 
     @GetMapping("/forgotPassword")
     private String forgotPassword() {
@@ -190,13 +188,14 @@ public class UserController {
         }
     }
 
-    @GetMapping("/editProfile")
+    @GetMapping("/myAccount/editProfile")
     private String editProfile(Principal principal, ModelMap modelMap) {
-        Optional<User> userOptional = userService.findByEmail(principal.getName());
-        log.info("Started edit profile with email = {}", userOptional);
-        List<User> userList = new ArrayList<>();
-        userOptional.ifPresent(userList::add);
-        modelMap.addAttribute("userData", userList);
+
+            Optional<User> userOptional = userService.findByEmail(principal.getName());
+            log.info("Started edit profile with email = {}", userOptional);
+            List<User> userList = new ArrayList<>();
+            userOptional.ifPresent(userList::add);
+            modelMap.addAttribute("userData", userList);
         return "singlePage/editProfile";
     }
 
@@ -208,6 +207,7 @@ public class UserController {
         String profilePic = System.currentTimeMillis() + "_" + file.getOriginalFilename();
         File image = new File(uploadDir, profilePic);
         file.transferTo(image);
+
         User user1 = userOptional.get();
         user.setActive(true);
         user.setEmail(user1.getEmail());
@@ -216,13 +216,14 @@ public class UserController {
         user.setProfilePic(profilePic);
         user.setLocalDate(LocalDate.from(user1.getLocalDate()));
         user.setPassword(user1.getPassword());
+
         log.info("User Update data = {}", user);
         userService.saveUser(user);
         log.info("Account update = {}", user);
         log.info("user saved = {}", user.getEmail());
 
-        String link = "http://localhost:8080/myAccount";
-        emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/updateAccount.html", locale);
+//        String link = "http://localhost:8080/myAccount";
+//        emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/updateAccount.html", locale);
         return "redirect:/myAccount";
 
     }

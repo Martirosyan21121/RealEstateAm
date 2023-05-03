@@ -8,15 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Configuration
 @EnableWebSecurity
@@ -36,6 +33,7 @@ public class SecurityConfiguration {
                 .and()
                 .build();
     }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -46,28 +44,30 @@ public class SecurityConfiguration {
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/save")
                 .permitAll()
-                .antMatchers(HttpMethod.GET,"/myAccount")
+                .antMatchers(HttpMethod.GET, "/myAccount")
                 .hasAnyAuthority("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST,"/activate")
+                .antMatchers(HttpMethod.POST, "/activate")
                 .hasAnyAuthority("USER", "ADMIN")
-                .antMatchers(HttpMethod.POST,"/activateCode")
+                .antMatchers(HttpMethod.POST, "/activateCode")
                 .hasAnyAuthority("USER", "ADMIN")
-                .antMatchers(HttpMethod.GET,"/admin111")
+                .antMatchers(HttpMethod.GET, "/admin111")
                 .hasAnyAuthority("ADMIN")
-                .antMatchers(HttpMethod.GET,"/user/delete")
+                .antMatchers(HttpMethod.GET, "/user/delete")
                 .hasAnyAuthority("ADMIN")
-                .antMatchers(HttpMethod.GET,"/editProfile")
-                .hasAnyAuthority("USER","ADMIN")
-                .antMatchers(HttpMethod.POST,"/updateProfile")
-                .hasAnyAuthority("USER","ADMIN")
-                .antMatchers(HttpMethod.GET,"/addHome")
+                .antMatchers(HttpMethod.GET, "/myAccount/editProfile")
+                .hasAnyAuthority("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/updateProfile")
+                .hasAnyAuthority("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/addHome")
                 .hasAnyAuthority("USER")
-                .antMatchers(HttpMethod.POST,"/addHome")
+                .antMatchers(HttpMethod.POST, "/addHome")
                 .hasAnyAuthority("USER")
-                .antMatchers(HttpMethod.POST,"/sendMessage")
+                .antMatchers(HttpMethod.POST, "/sendMessage")
                 .hasAnyAuthority("USER")
-                .antMatchers(HttpMethod.GET,"/userMessage")
-                .hasAnyAuthority("USER")
+                .antMatchers(HttpMethod.GET, "/messageUserToUser")
+                .hasAnyAuthority("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/delete/messageUserToUser")
+                .hasAnyAuthority("USER", "ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
