@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="icon" href="images/logo.png" type="image/gif" sizes="any">
 
@@ -81,14 +81,13 @@
         <div class="row contact">
             <div class="col-lg-6 col-sm-6 ">
 
+                <form action="/contactAdmin" method="post">
+                    <input type="text" class="form-control" placeholder="Subject" name="subject" required="required">
+                    <textarea rows="6" class="form-control" placeholder="Message" name="text"
+                              required="required"></textarea>
 
-                <input type="text" class="form-control" placeholder="Full Name">
-                <input type="text" class="form-control" placeholder="Email Address">
-                <input type="text" class="form-control" placeholder="Contact Number">
-                <textarea rows="6" class="form-control" placeholder="Message"></textarea>
-
-
-                <button type="submit" class="btn btn-success" name="Submit">Send Message</button>
+                    <button type="submit" class="btn btn-success">Send Message</button>
+                </form>
 
 
             </div>

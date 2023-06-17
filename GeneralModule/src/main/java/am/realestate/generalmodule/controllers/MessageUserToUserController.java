@@ -2,6 +2,7 @@ package am.realestate.generalmodule.controllers;
 
 import am.realestate.module.MessageUserToUser;
 import am.realestate.module.User;
+import am.realestate.reposerviceconfig.service.EmailService;
 import am.realestate.reposerviceconfig.service.MessageUserToUserService;
 import am.realestate.reposerviceconfig.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,11 @@ public class MessageUserToUserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    public EmailService emailService;
+
+    private static final String adminEmail = "narekmartirosyanbm21@gmail.com";
 
     @PostMapping("/sendMessage")
     private String messageUserToUser(@ModelAttribute MessageUserToUser messageUserToUser, Principal principal, ModelMap modelMap) {
@@ -69,5 +75,14 @@ public class MessageUserToUserController {
         messageUserToUserService.deleteMessage(id);
         log.info("deleted Message id = " + id);
         return "redirect:/messageUserToUser";
+    }
+
+    @PostMapping("/contactAdmin")
+    public String contactAdmin(String subject, String text, Principal principal){
+        String email = principal.getName();
+        Optional<User> optionalUser = userService.findByEmail(email);
+        User user = optionalUser.get();
+        emailService.send(adminEmail, subject, text + "\n " + user.getId() + "\n " + user.getName() + "\n " + email);
+        return "firstPages/contact";
     }
 }

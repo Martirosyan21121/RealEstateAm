@@ -68,6 +68,8 @@ public class SecurityConfiguration {
                 .hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/delete/messageUserToUser")
                 .hasAnyAuthority("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/contactAdmin")
+                .hasAnyAuthority("USER")
                 .and()
                 .formLogin()
                 .loginPage("/login")
