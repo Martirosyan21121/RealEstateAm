@@ -69,7 +69,7 @@ public class UserController {
             log.info("user saved = {}", user.getEmail());
 
             String link = "http://localhost:8080/myAccount";
-            emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "email/registerEmail.html", locale);
+            emailService.sendHtmlEmail(user.getEmail(), "Welcome", user, link, "", locale);
             return "redirect:/";
         }
     }

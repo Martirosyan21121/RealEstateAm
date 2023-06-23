@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.mail.MessagingException;
 import java.security.Principal;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Controller
@@ -78,11 +80,13 @@ public class MessageUserToUserController {
     }
 
     @PostMapping("/contactAdmin")
-    public String contactAdmin(String subject, String text, Principal principal){
+    public String contactAdmin(String subject, String text, Principal principal, ModelMap modelMap) throws MessagingException {
         String email = principal.getName();
         Optional<User> optionalUser = userService.findByEmail(email);
         User user = optionalUser.get();
-        emailService.send(adminEmail, subject, text + "\n " + user.getId() + "\n " + user.getName() + "\n " + email);
+        emailService.send(adminEmail, subject, "From:  " + user.getEmail() + "\n" + "User Name:  " + user.getName() + "\n" + "User Surname:  " + user.getSurname() + "\n" + "User ID:  " + user.getId() + "\n" + "Message:  " + text);
+        String successNotify = "Message send";
+        modelMap.addAttribute("message", successNotify);
         return "firstPages/contact";
     }
 }
